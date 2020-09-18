@@ -313,6 +313,7 @@ textarea{
 }
 
 .article-item a{
+    float: right;
     display: block;
     color: #444;
     text-decoration: none;
@@ -323,6 +324,22 @@ textarea{
     text-decoration: underline;
 }
 
+.article-item button{
+    float: right;
+    background: rgb(228, 51, 51);
+    
+}
+
+.article-item button:hover{
+    background: red;
+}
+
+.article-item .acciones{
+    display: block;
+    margin-top: -15px;
+    float: right;
+    text-align: center;
+}
 .subheader{
     font-size: 38px;
     border-bottom: 1px solid #eee;
