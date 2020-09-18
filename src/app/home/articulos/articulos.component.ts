@@ -31,4 +31,8 @@ export class ArticulosComponent implements OnInit {
     });
   }
 
+  eliminarArticulo(){
+    console.log("si entro joven");
+  }
+
 }
