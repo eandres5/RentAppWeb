@@ -1,1 +1,38 @@
-<p>usuarios works!</p>
+<div id="articles">
+    <article class="article-item" id="article-template" *ngFor="let user of usersR">
+        <div class="image-wrap">
+            <img [src]='user.urlimage' alt="Profile_Image" />
+        </div>
+        <h2>{{user.nombre}} {{user.apellido}}</h2>
+        <span class="date">
+            UserId: {{user.uid}}
+            <br>
+            Email: {{user.correo}}
+            <br>
+            Celular: {{user.telefono}}
+        </span>
+        <table class="acciones">
+            <h3>Acciones</h3>
+            <tr>
+                <td>Inhabilitado</td>
+                <td>Administrador</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" disabled id="Inhabilitado" name= "Inhabilitado" [checked]="user.inhabilitado" >
+                    <br>
+                    <button style="align-content: center;" (click)="openDiagInha(user.nombre, user.apellido,user.uid, user.inhabilitado)">Editar</button>
+                </td>
+                <td>
+                    <input type="checkbox"  disabled id="admin" name= "admin" [checked]="user.admin" >
+                    <br>
+                    <button style="align-content: center;" (click)="openDiagAdmin(user.nombre, user.apellido,user.uid, user.admin)">Editar</button>
+                </td>
+            </tr>
+                <button mat-button (click)="openDiagHistory(user)">Mostrar Historial</button>
+        </table>
+        <div class="clearfix">
+        </div>
+    </article>
+
+</div>

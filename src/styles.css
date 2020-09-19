@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 body {
     text-align: center;
     margin: 0px;
@@ -336,7 +337,7 @@ textarea{
 
 .article-item .acciones{
     display: block;
-    margin-top: -15px;
+    margin-top: -125px;
     float: right;
     text-align: center;
 }

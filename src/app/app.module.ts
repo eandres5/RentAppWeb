@@ -15,6 +15,15 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from 'angularfire2/database'; 
 import { environment } from '../environments/environment';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { HistoryComponent } from './components/history/history.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+
 
 //se pasa al final el appcoponent para que se el ultimo en revisar las reglas de ruteo
 
@@ -26,15 +35,25 @@ import { environment } from '../environments/environment';
     SliderComponent,
     SidebarComponent,
     FooterComponent,
-    AppComponent
+    AppComponent,
+    DialogComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HomeModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule
   ],
+  exports:[MatTableModule,MatSortModule],
+  entryComponents: [DialogComponent,HistoryComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

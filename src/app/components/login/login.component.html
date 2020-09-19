@@ -1,3 +1,22 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <div>
-    <button (click)="irHome()">home</button>
+    <div class="sidenav">
+        <div class="login-main-text">
+            <img src="assets/images/rentapp.png" />
+        </div>
+     </div>
+     <div class="main">
+        <div class="col-md-6">
+           <div class="login-form">
+                    <label>Correo:</label>
+                    <input type="text" class="form-control" placeholder="Ingrese el correo" #email1>
+                    <label>Contraseña:</label>
+                    <input type="password" class="form-control" placeholder="Ingrese su contraseña" #pass1>
+                    <br>
+                 <button type="submit" (click)="verificacionLogin()" class="btn btn-black">Login</button>
+           </div>
+        </div>
+     </div>
 </div>
