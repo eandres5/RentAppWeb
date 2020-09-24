@@ -1,20 +1,37 @@
-<div id="articles">
-    <article class="article-item" id="article-template" *ngFor="let articulo of articulos">
-        <div class="image-wrap">
-            <img [src]=" articulo.img == ''? '/assets/images/camera.png': articulo.img" alt="Articulo" />
-        </div>
+<div class="center-articulos">
+    
+    <div class="busqueda">
+        <input type="text" placeholder="Encuentra el artículo que estas buscando..">
+    </div>
 
-        <h2>{{articulo.titulo}}</h2>
-        <span class="date">
-            Hace 5 minutos
-        </span>
 
-        <button type="button" class="btn btn-default" (click)="eliminarArticulo()"> Eliminar<i class="fa fa-trash"></i>
-        </button>
-        
-        <div class="clearfix"></div>
-    </article>
+    <div id="cargando" *ngIf="!articulos">
+        <img src="../../../assets/images/carga.gif">
+    </div>
 
-    <!--AÑADIR ARTICULOS VIA JS-->
+    <div id="articles">
 
+        <article class="article-item" id="article-template" *ngFor="let articulo of articulos">
+            <div class="image-wrap">
+                <img [src]=" articulo.img == ''? '/assets/images/camera.png': articulo.img" alt="Articulo" />
+            </div>
+
+            <h2>{{articulo.titulo}}</h2>
+            <span class="date">
+                {{fecha | amLocale: 'es' | amTimeAgo }}
+            </span>
+
+            <button type="button" class="btn btn-default" (click)="eliminarArticulo()"> Eliminar<i
+                    class="fa fa-trash"></i>
+            </button>
+
+            <div class="clearfix"></div>
+        </article>
+
+        <!--AÑADIR ARTICULOS VIA JS-->
+
+    </div>
+
+
+    <div class="clearfix"></div>
 </div>

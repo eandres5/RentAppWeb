@@ -11,9 +11,9 @@
         <div class="col-md-6">
            <div class="login-form">
                     <label>Correo:</label>
-                    <input type="text" class="form-control" placeholder="Ingrese el correo" #email1>
+                    <input (keyup.enter)="verificacionLogin()" type="text" class="form-control" placeholder="Ingrese el correo" #email1>
                     <label>Contraseña:</label>
-                    <input type="password" class="form-control" placeholder="Ingrese su contraseña" #pass1>
+                    <input (keyup.enter)="verificacionLogin()" type="password" class="form-control" placeholder="Ingrese su contraseña" #pass1>
                     <br>
                  <button type="submit" (click)="verificacionLogin()" class="btn btn-black">Login</button>
            </div>

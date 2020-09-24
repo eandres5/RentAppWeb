@@ -23,7 +23,9 @@ import { HistoryComponent } from './components/history/history.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-
+import { ArticulosPipe } from './pipes/articulos.pipe';
+import {MatIconModule} from '@angular/material/icon';
+import { MomentModule } from 'angular2-moment';
 
 //se pasa al final el appcoponent para que se el ultimo en revisar las reglas de ruteo
 
@@ -37,7 +39,8 @@ import {MatSortModule} from '@angular/material/sort';
     FooterComponent,
     AppComponent,
     DialogComponent,
-    HistoryComponent
+    HistoryComponent,
+    ArticulosPipe
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,9 @@ import {MatSortModule} from '@angular/material/sort';
     MatButtonModule,
     MatPaginatorModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatIconModule,
+    MomentModule
   ],
   exports:[MatTableModule,MatSortModule],
   entryComponents: [DialogComponent,HistoryComponent],

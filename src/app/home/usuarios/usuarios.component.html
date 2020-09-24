@@ -1,3 +1,11 @@
+<div class="busqueda">
+    <input type="text" placeholder="Buscar..">
+</div>
+
+<div id="cargando" *ngIf="!usersR">
+    <img src="../../../assets/images/carga.gif">
+</div>
+
 <div id="articles">
     <article class="article-item" id="article-template" *ngFor="let user of usersR">
         <div class="image-wrap">

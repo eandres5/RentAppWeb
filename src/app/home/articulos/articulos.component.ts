@@ -11,6 +11,7 @@ export class ArticulosComponent implements OnInit {
 
   articulos: TaskI[];
   textoBuscar: String = '';
+  fecha: any;
 
   articulo: TaskI = {
     id: '',
@@ -29,6 +30,7 @@ export class ArticulosComponent implements OnInit {
       this.articulos = res;
       console.log(this.articulos);
     });
+    this.fecha = new Date();
   }
 
   eliminarArticulo(){

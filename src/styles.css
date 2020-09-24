@@ -30,6 +30,27 @@ body {
     float:none;
 }
 
+.center-home{
+    margin-top: 5px;
+    width: 75%;
+    margin: 0px auto;
+}
+
+.img-home{
+    margin-top: 0px;
+}
+
+.center-aritculos{
+    width: 100%;
+    margin: 0px auto;
+}
+
+.busqueda{
+    width: 100%;
+    margin-top: 15px;
+    margin-left: 130px;
+}
+
 #logo {
     width: 30%;
     font-size: 30px;
@@ -78,7 +99,7 @@ body {
 
 #menu ul{
     line-height: 50px;
-    width: 60%;
+    width: 90%;
     float:right;
 }
 
@@ -99,6 +120,20 @@ body {
 
 #menu a:hover,
 .active{
+    color: black !important;
+}
+
+
+#icono{
+    display: block;
+    color: white;
+    float: left;
+    margin-top: 14px;
+    margin-left: none;
+    margin-right: 10px;
+}
+
+#icono:hover{
     color: black !important;
 }
 
@@ -169,6 +204,13 @@ body {
     margin-right: 20px;
 }
 
+#content-articulos{
+    width: 70%;
+    float:left;
+    min-height: 650px;
+    margin-right: 20px;
+}
+
 #sidebar{
     width: 25%;
     float:left;
@@ -178,6 +220,7 @@ body {
     background: #ECECEC;
     padding: 20px;
     margin-top: 30px;
+    margin-left: 100px;
 }
 
 .sidebar-item h3{
@@ -276,11 +319,13 @@ textarea{
     padding: 0px;
 }
 
+
 .article-item{
-    width: 100%;
+    width: 110%;
     border-bottom: 1px solid #eee;
     padding-bottom: 20px;
     padding-top: 20px;
+    margin-left: 130px;
     text-align: left;
 }
 
@@ -382,6 +427,26 @@ textarea{
 
     #menu ul{
         width: auto;
+    }
+}
+
+@media (max-width: 1070px){
+    .center{
+        width: 90%;
+    }
+
+    #menu{
+        width: 60%;
+    }
+}
+
+@media (max-width: 997px){
+    .center{
+        width: 85%;
+    }
+
+    #menu{
+        width: 70%;
     }
 }
 
