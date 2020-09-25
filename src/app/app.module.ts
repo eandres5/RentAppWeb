@@ -26,6 +26,9 @@ import {MatSortModule} from '@angular/material/sort';
 import { ArticulosPipe } from './pipes/articulos.pipe';
 import {MatIconModule} from '@angular/material/icon';
 import { MomentModule } from 'angular2-moment';
+import {FormsModule} from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 //se pasa al final el appcoponent para que se el ultimo en revisar las reglas de ruteo
 
@@ -55,7 +58,9 @@ import { MomentModule } from 'angular2-moment';
     MatTableModule,
     MatSortModule,
     MatIconModule,
-    MomentModule
+    MomentModule,
+    FormsModule,
+    Ng2SearchPipeModule
   ],
   exports:[MatTableModule,MatSortModule],
   entryComponents: [DialogComponent,HistoryComponent],

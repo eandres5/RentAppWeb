@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {DialogComponent} from '../../components/dialog/dialog.component';
 import {HistoryComponent} from '../../components/history/history.component';
 
+
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
@@ -23,6 +24,7 @@ export class UsuariosComponent implements OnInit {
 
   ngOnInit(): void {
     this.opcionIna();
+    
   }
   openDiagInha(nombre: string, apellido: string,uid: string, ver: boolean) : void{
     this.ver=ver;
@@ -41,6 +43,7 @@ export class UsuariosComponent implements OnInit {
       if(this.razon){
         this.auth.actualizarIn(this.uid,this.ver,this.razon);
         console.log(this.razon);
+        this.ina=false;
       }
     })
   }
@@ -97,5 +100,6 @@ export class UsuariosComponent implements OnInit {
       });
     } 
   }
+
 
 }

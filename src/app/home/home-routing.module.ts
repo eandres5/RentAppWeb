@@ -5,6 +5,8 @@ import { ArticulosComponent } from './articulos/articulos.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 
+
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent,
   children: [

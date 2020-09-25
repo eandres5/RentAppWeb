@@ -6,6 +6,10 @@ import { ArticulosComponent } from './articulos/articulos.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { MomentModule } from 'angular2-moment';
 import { InicioComponent } from './inicio/inicio.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {FormsModule} from '@angular/forms';
+
+
 
 
 @NgModule({
@@ -13,7 +17,9 @@ import { InicioComponent } from './inicio/inicio.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    MomentModule
+    MomentModule,
+    Ng2SearchPipeModule,
+    FormsModule
   ]
 })
 export class HomeModule { }
