@@ -1,7 +1,8 @@
 <div class="center-articulos">
     
     <div class="busqueda">
-        <input type="text" placeholder="Encuentra el artículo que estas buscando..">
+        <input type="text" name="filtroAr" placeholder="Encuentra el artículo que estas buscando.." [(ngModel)]="filtroAr">
+        {{textoBuscar}}
     </div>
 
 
@@ -9,9 +10,10 @@
         <img src="../../../assets/images/carga.gif">
     </div>
 
+
     <div id="articles">
 
-        <article class="article-item" id="article-template" *ngFor="let articulo of articulos">
+        <article class="article-item" id="article-template" *ngFor="let articulo of articulos | filtroArticulo: filtroAr">
             <div class="image-wrap">
                 <img [src]=" articulo.img == ''? '/assets/images/camera.png': articulo.img" alt="Articulo" />
             </div>
