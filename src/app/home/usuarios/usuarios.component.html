@@ -1,23 +1,26 @@
-<div class="busqueda">
-    <input type="text" placeholder="Buscar..">
+<div>
+    <label> Mostrar Usuarios Bloqueados</label>
+    <input type="checkbox" id="ina" name= "ina" [checked]="ina" [(ngModel)]= "ina" (change)="opcionIna()">
 </div>
-
+<div class="busqueda">
+    <input type="text" placeholder="Buscar.." name="textobuscar" [(ngModel)]="textobuscar" >
+</div>
 <div id="cargando" *ngIf="!usersR">
     <img src="../../../assets/images/carga.gif">
 </div>
 
-<div id="articles">
-    <article class="article-item" id="article-template" *ngFor="let user of usersR">
+<div id="articles" *ngFor="let user of usersR  | filter: textobuscar ">
+    <article class="article-item" id="article-template" >
         <div class="image-wrap">
             <img [src]='user.urlimage' alt="Profile_Image" />
         </div>
         <h2>{{user.nombre}} {{user.apellido}}</h2>
         <span class="date">
-            UserId: {{user.uid}}
-            <br>
             Email: {{user.correo}}
             <br>
             Celular: {{user.telefono}}
+            <br>
+            UserId: {{user.uid}}
         </span>
         <table class="acciones">
             <h3>Acciones</h3>
