@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { TaskI } from '../models/task.interface';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
+import { ArticuloAuditoriaI } from '../models/articuloAuditoria.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -26,13 +27,23 @@ export class ArticulosService {
 
   }
 
-
   getArticulos(): Observable<TaskI[]>{
     return this.articulos;
+  }
+
+  getArticulo(id: string): Observable<TaskI>{
+    return this.articuloCollection.doc<TaskI>(id).valueChanges().pipe(
+      take(1),
+      map(articulo=>{
+        articulo.id = id;
+        return articulo;
+      })
+    );
   }
 
   deleteArticulo(id: string): Promise<void>{
     return this.articuloCollection.doc(id).delete();
   }
 
+  
 }

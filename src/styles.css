@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 body {
     text-align: center;
     margin: 0px;
@@ -27,6 +28,27 @@ body {
 .clearfix{
     clear:both;
     float:none;
+}
+
+.center-home{
+    margin-top: 5px;
+    width: 75%;
+    margin: 0px auto;
+}
+
+.img-home{
+    margin-top: 0px;
+}
+
+.center-aritculos{
+    width: 100%;
+    margin: 0px auto;
+}
+
+.busqueda{
+    width: 100%;
+    margin-top: 15px;
+    margin-left: 130px;
 }
 
 #logo {
@@ -70,14 +92,14 @@ body {
 }
 
 #menu{
-    width: 50%;
+    width: 60%;
     float:right;
     font-size: 20px;
 }
 
 #menu ul{
     line-height: 50px;
-    width: 60%;
+    width: 90%;
     float:right;
 }
 
@@ -98,6 +120,20 @@ body {
 
 #menu a:hover,
 .active{
+    color: black !important;
+}
+
+
+#icono{
+    display: block;
+    color: white;
+    float: left;
+    margin-top: 14px;
+    margin-left: none;
+    margin-right: 10px;
+}
+
+#icono:hover{
     color: black !important;
 }
 
@@ -151,6 +187,12 @@ body {
     color:white;
 }
 
+.btn-editar{
+    width: 100%;
+    text-align: center;
+    background: #CA8B0E;
+}
+
 #slider.slider-small{
     height: 150px;
 }
@@ -168,6 +210,13 @@ body {
     margin-right: 20px;
 }
 
+#content-articulos{
+    width: 70%;
+    float:left;
+    min-height: 650px;
+    margin-right: 20px;
+}
+
 #sidebar{
     width: 25%;
     float:left;
@@ -177,6 +226,7 @@ body {
     background: #ECECEC;
     padding: 20px;
     margin-top: 30px;
+    margin-left: 100px;
 }
 
 .sidebar-item h3{
@@ -275,11 +325,13 @@ textarea{
     padding: 0px;
 }
 
+
 .article-item{
-    width: 100%;
+    width: 110%;
     border-bottom: 1px solid #eee;
     padding-bottom: 20px;
     padding-top: 20px;
+    margin-left: 130px;
     text-align: left;
 }
 
@@ -313,6 +365,7 @@ textarea{
 }
 
 .article-item a{
+    float: right;
     display: block;
     color: #444;
     text-decoration: none;
@@ -323,27 +376,147 @@ textarea{
     text-decoration: underline;
 }
 
+.article-item button{
+    float: right;
+    background: rgb(228, 51, 51);
+    
+}
+
+
+.user-item button:hover{
+    background: red;
+}
+
+.user-item .acciones{
+    display: block;
+    margin-top: -125px;
+    float: right;
+    text-align: center;
+}
 .subheader{
     font-size: 38px;
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
 }
 
-.article-detail .image-wrap{
+.user-detail .image-wrap{
     float:none;
     width:100%;
     height: 300px;
 }
 
-.article-detail .image-wrap img{
+.user-detail .image-wrap img{
     width: 100%;
     height: auto;
 }
 
-.article-detail .subheader{
+.user-detail .subheader{
     margin-top: 15px;
     margin-bottom: 0px;
     border:none;
+}
+
+.user-item{
+    width: 110%;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-left: 130px;
+    text-align: left;
+}
+
+.user-item .image-wrap {
+    width: 130px;
+    height: 130px;
+    overflow:hidden;
+    float:left;
+    margin-right: 15px;
+    border: 1px solid #ccc;
+}
+
+.user-item .image-wrap img{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.user-item h2{
+    display: block;
+    width:100%;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 7px;
+}
+
+.user-item .date{
+    display: block;
+    width: 100%;
+    color: rgb(122, 122, 122);
+}
+
+.user-item p{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 30px;
+    height: 30px;
+}
+
+.user-item a{
+    float: right;
+    display: block;
+    color: #444;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.user-item a:hover{
+    text-decoration: underline;
+}
+
+.user-item button{
+    float: right;
+    text-align: 10px;
+    margin-top: 10px;
+    align-items: center;
+    background: #C4BF0D;
+    
+}
+
+.user-item button:hover{
+    background: #EAE40F;
+}
+
+.user-item .acciones{
+    display: block;
+    margin-top: -125px;
+    float: right;
+    text-align: center;
+}
+.subheader{
+    font-size: 38px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.user-detail .image-wrap{
+    float:none;
+    width:100%;
+    height: 300px;
+}
+
+.user-detail .image-wrap img{
+    width: 100%;
+    height: auto;
+}
+
+.user-detail .subheader{
+    margin-top: 15px;
+    margin-bottom: 0px;
+    border:none;
+}
+
+.user-item .icono-user{
+    align-items: center;
 }
 
 /*RESPONSIVE*/
@@ -356,6 +529,7 @@ textarea{
     }
 }
 
+
 /*Desde la anchura 0px hasta la anchura 963px de pantalla*/
 @media (max-width: 1314px){
     .center{
@@ -364,6 +538,76 @@ textarea{
 
     #menu ul{
         width: auto;
+    }
+}
+
+@media (max-width: 1070px){
+    .center{
+        width: 90%;
+    }
+
+    #menu{
+        width: 60%;
+    }
+}
+
+@media (max-width: 1063px){
+    .center{
+        width: 85%;
+    }
+
+    #menu{
+        width: 60%;
+    }
+}
+
+@media (max-width: 1110px){
+    /*Se ejecutarán estos estilos*/
+    .center{
+        width: 85%;
+    }
+    #menu{
+        width: 70%;
+    }
+}
+
+@media (max-width: 1063px){
+    /*Se ejecutarán estos estilos*/
+    .center{
+        width: 87%;
+    }
+    #menu{
+        width: 70%;
+    }
+}
+
+@media (max-width: 1063px){
+    /*Se ejecutarán estos estilos*/
+    .center{
+        width: 90%;
+    }
+    #menu{
+        width: 70%;
+    }
+}
+
+@media (max-width: 1004px){
+    /*Se ejecutarán estos estilos*/
+    .center{
+        width: 92%;
+    }
+    #menu{
+        width: 70%;
+    }
+}
+
+@media (max-width: 997px){
+    .center{
+        width: 91%;
+    }
+
+    #menu{
+        width: 70%;
     }
 }
 

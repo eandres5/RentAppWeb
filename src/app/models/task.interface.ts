@@ -6,5 +6,6 @@ export interface TaskI {
     img: string;
     telefono: string;
     costo: string;
+    fecha?: Date;
     userId: string;
 }

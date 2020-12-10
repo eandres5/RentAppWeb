@@ -9,14 +9,21 @@
         <nav id="menu">
             <ul>
                 <li>
-                    <a [routerLink]="['/home']">Inicio</a>
+                    <a [routerLink]="['/home/inicio']">Inicio</a>
                 </li>
                 <li>
                     <a [routerLink]="['/home/articulos']" [routerLinkActive]="['active']">Artículos</a>
                 </li>
                 <li>
                     <a [routerLink]="['/home/usuarios']" [routerLinkActive]="['active']">Usuarios</a>
-                </li>                            
+                </li>
+                <li>
+                    <a [routerLink]="['/home/articuloseliminados']" [routerLinkActive]="['active']">Eliminados</a>
+                </li>
+                <li>
+                    <a (click)="logout()"> <mat-icon id="icono" aria-hidden="false" color="white" aria-label="Example home icon">account_circle</mat-icon> Cerrar Sesión</a>
+                </li>
+                                          
             </ul>
         </nav>
 
