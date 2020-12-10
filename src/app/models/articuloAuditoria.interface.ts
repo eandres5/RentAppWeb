@@ -1,4 +1,4 @@
-export interface TaskI {
+export interface ArticuloAuditoriaI {
     //variables a utilizar
     id?: any;
     titulo: string;
@@ -6,6 +6,8 @@ export interface TaskI {
     img: string;
     telefono: string;
     costo: string;
-    fecha?: Date;
     userId: string;
+    fecha?: Date;
+    fechaEliminacion?: Date;
+    razon: string;
 }

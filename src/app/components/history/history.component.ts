@@ -45,8 +45,6 @@ export class HistoryComponent implements OnInit {
       }else{
         this.razones= data2.razones;
         this.listData = new MatTableDataSource(this.razones);
-        console.log("Este es el data:");
-        console.log(this.listData);
         this.listData.sort = this.sort;
         this.listData.paginator= this.paginator;
       }

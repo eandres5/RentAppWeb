@@ -5,6 +5,7 @@ import { ArticulosComponent } from './articulos/articulos.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import {AuthGuard} from '../guards/auth.guard';
+import { ArticuloseliminadosComponent } from './articuloseliminados/articuloseliminados.component';
 
 
 
@@ -13,7 +14,8 @@ const routes: Routes = [
   children: [
     { path: 'articulos', component: ArticulosComponent, canActivate: [AuthGuard]},
     { path: 'usuarios', component: UsuariosComponent, canActivate:[AuthGuard]},
-    { path: 'inicio', component: InicioComponent, canActivate: [AuthGuard]}
+    { path: 'inicio', component: InicioComponent, canActivate: [AuthGuard]},
+    { path: 'articuloseliminados', component: ArticuloseliminadosComponent, canActivate: [AuthGuard]}
   ]
 }
 ];

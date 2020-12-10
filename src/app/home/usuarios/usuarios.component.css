@@ -7,9 +7,15 @@
 .example-margin {
     margin: 0 10px;
   }
-.mat-column-Perfil {
+  .mat-column-Perfil {
     flex: 0 0 150px;
 }
-.mat-column-Acciones {
+.mat-column-Cuenta {
   flex: 0 0 150px;
+}
+.mat-column-Usuario {
+  flex: 0 0 150px;
+}
+.mat-column-Visualizar {
+  flex: 0 0 130px;
 }

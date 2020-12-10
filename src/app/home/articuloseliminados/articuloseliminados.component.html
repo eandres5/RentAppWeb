@@ -6,10 +6,9 @@
     </div>
     
 
-    <div id="cargando" *ngIf="!articulos">
+    <div id="cargando" *ngIf="!articulosEliminados">
         <img src="../../../assets/images/carga.gif">
     </div>
-
 
     <div class="articles">
         <article class="article-item" id="article-template">
@@ -31,20 +30,12 @@
                     <mat-cell *matCellDef="let element">
                         <td>
                             <h2>{{element.titulo}}</h2>
+                            <h2>{{element.razon}}</h2>
                             <span class="date">
-                                Fecha de creación: {{element.fecha.toDate() | date:'yyyy/MM/dd h:mm:ss a' | amLocale: 'es' | amTimeAgo }}
+                                Fecha de eliminación:
+                                {{element.fechaEliminacion.toDate() | date:'yyyy/MM/dd h:mm:ss a' | amLocale: 'es' | amTimeAgo }}
                             </span>
                         </td>
-                    </mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="Accion">
-                    <mat-header-cell *matHeaderCellDef>
-                        <h1>Acción</h1>
-                    </mat-header-cell>
-                    <mat-cell *matCellDef="let element">
-                        <button type="button" class="btn btn-default" (click)="eliminarArticulo(element.id)"> Eliminar<i
-                            class="fa fa-trash"></i>
-                    </button>
                     </mat-cell>
                 </ng-container>
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -57,5 +48,5 @@
 
     </div>
 
-    <div class="clearfix"></div>
-</div>
+
+

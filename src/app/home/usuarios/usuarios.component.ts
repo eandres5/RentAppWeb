@@ -1,8 +1,9 @@
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '../../components/dialog/dialog.component';
-import { HistoryComponent } from '../../components/history/history.component';
+import { Component, OnInit, Inject, ViewChild} from '@angular/core';
+import {AuthService} from '../../services/auth.service';
+import {MatDialog} from '@angular/material/dialog';
+import {DialogComponent} from '../../components/dialog/dialog.component';
+import {HistoryComponent} from '../../components/history/history.component';
+import { ArticulosusuarioComponent } from '../../components/articulosusuario/articulosusuario.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -12,29 +13,32 @@ interface usuarioss {
   apellido: string,
   urlimage: string,
 }
+
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.css']
 })
 export class UsuariosComponent implements OnInit {
-  public usersR: any = [];
+  public usersR : any =[];
   public ver: boolean;
   public uid: string;
   public mensaje: string;
-  textobuscar = '';
-  public item = "correo";
-  public ina = false;
-  hideMe = false;
+  textobuscar='';
+  public item= "correo";
+  public ina= false;
+  hideMe=false;
   razon: string;
   public usu: any = [];
-  displayedColumns: string[] = ['Perfil', 'Datos', 'Acciones'];
+  displayedColumns: string[] = ['Perfil', 'Datos','Cuenta','Usuario','Visualizar'];
   listData: MatTableDataSource<any>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(private auth: AuthService, public diag: MatDialog) { }
+
   ngOnInit(): void {
     this.opcionIna();
+    
   }
   openDiagInha(nombre: string, apellido: string, uid: string, ver: boolean): void {
     this.ver = ver;
@@ -77,6 +81,7 @@ export class UsuariosComponent implements OnInit {
       }
     })
   }
+  
   openDiagHistory(user) {
     const dialogRef = this.diag.open(HistoryComponent, {
       width: '1500px',
@@ -86,6 +91,18 @@ export class UsuariosComponent implements OnInit {
       console.log(res);
     })
   }
+
+  openArticlesUse(user){
+    console.log(user);
+    const dialogRef = this.diag.open(ArticulosusuarioComponent,{
+      width: '1500px',
+      data: user
+    })
+    dialogRef.afterClosed().subscribe(res=>{
+      console.log(res);
+    })
+  }
+
   opcionIna() {
     console.log(this.ina);
     this.usersR = [];
@@ -127,12 +144,12 @@ export class UsuariosComponent implements OnInit {
     }
 
   }
+  
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.listData.filter = filterValue;
   }
-
-
+ 
 
 }

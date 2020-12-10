@@ -100,3 +100,23 @@
     background-color: #000 !important;
     color: #fff;
   }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #575757;
+    height: 100vh;
+  }
+  #login .container #login-row #login-column #login-box {
+    margin-top: 50px;
+    max-width: 600px;
+    height: 320px;
+    border: 1px solid #ffffff;
+    background-color: #dfdfdf;
+  }
+  #login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+  }
+  #login .container #login-row #login-column #login-box #login-form #register-link {
+    margin-top: -85px;
+  }

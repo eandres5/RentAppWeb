@@ -1,3 +1,7 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+</head>
 <div>
     <label> Mostrar Usuarios Bloqueados</label>
     <input type="checkbox" id="ina" name="ina" [checked]="ina" [(ngModel)]="ina" (change)="opcionIna()">
@@ -8,8 +12,9 @@
 <div id="cargando" *ngIf="!usersR">
     <img src="../../../assets/images/carga.gif">
 </div>
+
 <div class="articles">
-    <article class="article-item" id="article-template">
+    <article class="user-item" id="user-template">
         <mat-table [dataSource]="listData" matSort>
             <ng-container matColumnDef="Perfil">
                 <mat-header-cell *matHeaderCellDef>
@@ -37,39 +42,59 @@
                     </td>
                 </mat-cell>
             </ng-container>
-            <ng-container matColumnDef="Acciones">
+            <ng-container matColumnDef="Cuenta">
                 <mat-header-cell *matHeaderCellDef>
-                    <h1>Acciones</h1>
+                    <h1>Cuenta</h1>
                 </mat-header-cell>
                 <mat-cell *matCellDef="let element">
                     <table>
                         <tr>
-                            <td>Inhabilitado</td>
-                            <td>Administrador</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" disabled id="Inhabilitado" name="Inhabilitado"
-                                    [checked]="element.inhabilitado">
-                                <br>
-                                <button style="align-content: center;"
-                                    (click)="openDiagInha(element.nombre, element.apellido,element.uid, element.inhabilitado)">Editar</button>
-                            </td>
-                            <td>
-                                <input type="checkbox" disabled id="admin" name="admin" [checked]="element.admin">
-                                <br>
-                                <button style="align-content: center;"
-                                    (click)="openDiagAdmin(element.nombre, element.apellido,element.uid, element.admin)">Editar</button>
-                            </td>
-                        </tr>
-                        <button mat-button (click)="openDiagHistory(element)">Mostrar Historial</button>
+                            <td>{{element.inhabilitado ? 'Bloqueada' : 'Habilitada'}}</td>
+                            <td><button style="margin-left: 5px;" (click)="openDiagInha(element.nombre, element.apellido,element.uid, element.inhabilitado)">
+                                <mat-icon class="icono-user">editar</mat-icon>
+                            </button></td>
+                          </tr>
                     </table>
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Usuario">
+                <mat-header-cell *matHeaderCellDef>
+                    <h1>Usuario</h1>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                        <table>
+                            <tr>
+                                <td>
+                                    {{element.admin ? 'Admin.' : 'Normal'}}
+                                </td>
+                                <td>
+                                    <button style="margin-left: 5px;" (click)="openDiagAdmin(element.nombre, element.apellido,element.uid, element.admin)">
+                                        <mat-icon class="icono-user">editar</mat-icon>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Visualizar">
+                <mat-header-cell *matHeaderCellDef>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <td>
+                        <button style="margin-left: 5px;" (click)="openArticlesUse(element)">Articulos</button>
+                        <button mat-raised-button (click)="openDiagHistory(element)">Mostrar Historial</button>
+                    </td>
                 </mat-cell>
             </ng-container>
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
         <mat-paginator [pageSizeOptions]="[5, 10]" [pageSize]="5"></mat-paginator>
+        <div class="clearfix">
+        </div>
     </article>
+    <a href="#" class="button blue">
+        <span class="icon-house"></span>Inicio
+    </a>
 
 </div>

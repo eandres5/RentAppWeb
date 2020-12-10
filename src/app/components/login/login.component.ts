@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
   }
 
   irHome(){
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home/inicio']);
   }
 
 }
