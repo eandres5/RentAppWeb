@@ -59,6 +59,25 @@
                     </table>
                 </mat-cell>
             </ng-container>
+            <ng-container matColumnDef="Usuario">
+                <mat-header-cell *matHeaderCellDef>
+                    <h1>Usuario</h1>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                        <table>
+                            <tr>
+                                <td>
+                                    {{element.admin ? 'Admin.' : 'Normal'}}
+                                </td>
+                                <td>
+                                    <button mat-raised-button style="margin-left: 5px;" (click)="openDiagAdmin(element.nombre, element.apellido,element.uid, element.admin)">
+                                        <mat-icon class="icono-user">editar</mat-icon>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                </mat-cell>
+            </ng-container>
             <ng-container matColumnDef="Visualizar">
                 <mat-header-cell *matHeaderCellDef>
                 </mat-header-cell>

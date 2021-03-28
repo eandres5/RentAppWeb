@@ -13,12 +13,13 @@ import { ArticuloseliminadosComponent } from './articuloseliminados/articuloseli
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-
-
+import { UseradminComponent } from './useradmin/useradmin.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
-  declarations: [ArticulosComponent, UsuariosComponent, InicioComponent, ArticuloseliminadosComponent],
+  declarations: [ArticulosComponent, UsuariosComponent, InicioComponent, ArticuloseliminadosComponent, UseradminComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -29,6 +30,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
+    MatButtonModule,
+    MatMenuModule
   ]
 })
 export class HomeModule { }

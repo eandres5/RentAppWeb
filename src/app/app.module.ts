@@ -30,7 +30,7 @@ import {FormsModule} from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ConfirmacionComponent } from './components/confirmacion/confirmacion.component';
 import { ArticulosusuarioComponent } from './components/articulosusuario/articulosusuario.component';
-
+import { MatMenuModule } from '@angular/material/menu';
 
 //se pasa al final el appcoponent para que se el ultimo en revisar las reglas de ruteo
 
@@ -64,7 +64,8 @@ import { ArticulosusuarioComponent } from './components/articulosusuario/articul
     MatIconModule,
     MomentModule,
     FormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatMenuModule
   ],
   exports:[MatTableModule,MatSortModule],
   entryComponents: [DialogComponent,HistoryComponent],

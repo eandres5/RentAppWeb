@@ -15,11 +15,11 @@ interface usuarioss {
 }
 
 @Component({
-  selector: 'app-usuarios',
-  templateUrl: './usuarios.component.html',
-  styleUrls: ['./usuarios.component.css']
+  selector: 'app-useradmin',
+  templateUrl: './useradmin.component.html',
+  styleUrls: ['./useradmin.component.css']
 })
-export class UsuariosComponent implements OnInit {
+export class UseradminComponent implements OnInit {
   public usersR : any =[];
   public ver: boolean;
   public uid: string;
@@ -27,10 +27,11 @@ export class UsuariosComponent implements OnInit {
   textobuscar='';
   public item= "correo";
   public ina= false;
+  public contadoadmin=0;
   hideMe=false;
   razon: string;
   public usu: any = [];
-  displayedColumns: string[] = ['Perfil', 'Datos','Cuenta','Visualizar'];
+  displayedColumns: string[] = ['Perfil', 'Datos','Cuenta','Usuario','Visualizar'];
   listData: MatTableDataSource<any>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -61,7 +62,48 @@ export class UsuariosComponent implements OnInit {
       }
     })
   }
-  
+  openDiagAdmin(nombre: string, apellido: string, uid: string, ver: boolean): void {
+    if(this.contadoadmin<=3){
+      this.ver = ver;
+    this.uid = uid;
+    if (ver == false || ver == null) {
+      this.mensaje = "sea";
+    } else {
+      this.mensaje = "deje de ser"
+    }
+    const dialogRef = this.diag.open(DialogComponent, {
+      width: '250px',
+      data: 'Desea que el usuario:' + nombre + " " + apellido + " " + this.mensaje + " ADMINISTRADOR",
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      this.razon = res;
+      if (this.razon) {
+        console.log(this.razon);
+        this.contadoadmin=0;
+        this.auth.actualizarAdmin(this.uid, this.ver, this.razon);
+      }
+    })
+    }else{
+      this.ver=ver;
+      this.uid = uid;
+      if(this.ver==true){
+        const dialogRef = this.diag.open(DialogComponent, {
+          width: '250px',
+          data: 'Desea que el usuario:' + nombre + " " + apellido + " " + "deje de ser"+ " ADMINISTRADOR",
+        });
+        dialogRef.afterClosed().subscribe(res => {
+          this.razon = res;
+          if (this.razon) {
+            console.log(this.razon);
+            this.contadoadmin=0;
+            this.auth.actualizarAdmin(this.uid, this.ver, this.razon);
+          }
+        })
+      }else{
+        alert("Excedio el numero de Usuarios Administrador!, Quite el previlegio de Administrador a un usuario");
+      }
+    }
+  }
   openDiagHistory(user) {
     const dialogRef = this.diag.open(HistoryComponent, {
       width: '1500px',
@@ -88,7 +130,14 @@ export class UsuariosComponent implements OnInit {
     this.usersR = [];
     if (this.ina == false) {
       this.usersR = [];
+      this.contadoadmin=0;
       this.auth.getUsers().subscribe(users => {
+        for (let i = 0; i < users.length; i++) {
+          if(users[i].admin==true){
+            this.contadoadmin++
+          }
+        }
+        console.log(this.contadoadmin);
         this.usersR = users;
         const data2: usuarioss = this.usersR as usuarioss;
         if (data2 == null) {
@@ -103,6 +152,7 @@ export class UsuariosComponent implements OnInit {
     } else {
       console.log('entra al false');
       this.usersR = [];
+      this.contadoadmin=0;
       this.auth.getUsers().subscribe(users => {
         var cont = 0;
         for (let i = 0; i < users.length; i++) {
@@ -110,7 +160,11 @@ export class UsuariosComponent implements OnInit {
             this.usersR[cont] = users[i];
             cont++;
           }
+          if(users[i].admin==true){
+            this.contadoadmin++
+          }
         }
+        console.log(this.contadoadmin);
         const data2: usuarioss = this.usersR as usuarioss;
         if (data2 == null) {
           this.usu = [];
@@ -130,6 +184,5 @@ export class UsuariosComponent implements OnInit {
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.listData.filter = filterValue;
   }
- 
 
 }

@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
-import {map} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 import {firestore} from 'firebase';
+import { Observable, of } from 'rxjs';
+import {User} from '../models/user.interface';
 
 interface user{
   uid: string,
@@ -14,6 +16,7 @@ interface user{
   img: string,
   admin: boolean,
   inhabilitado: boolean,
+  superadmin: boolean,
   razones:{
     date: Date,
     razon: string
@@ -26,7 +29,18 @@ export class AuthService {
   public v: boolean;
   public bloqueo: boolean;
   public admi: boolean;
-  constructor(private AFauth: AngularFireAuth, private router: Router, private db: AngularFirestore) { }
+  public userA: any[];
+  public user$: Observable<User>
+  constructor(private AFauth: AngularFireAuth, private router: Router, private db: AngularFirestore) {
+    this.user$ = this.AFauth.authState.pipe(switchMap((user)=>{
+      if(user){
+        return this.db.collection("users").doc(user.uid).valueChanges()
+      }
+      return of(null);
+    })
+    );
+   }
+  
   login(usuario: string, password: string) {
     //retorna promesa del usuario.
     return new Promise((resolve, rejected) => {
@@ -47,6 +61,10 @@ export class AuthService {
   obtenerDatos(uid){
     return this.db.collection('users').doc(uid).snapshotChanges();
   }
+  obtenerUsua(uid){
+    return this.db.collection('users').doc(uid).get();
+  }
+  
   getUsers(){
     return this.db.collection('users').snapshotChanges().pipe(map(rooms =>{
       return rooms.map(a =>{
@@ -56,31 +74,5 @@ export class AuthService {
       })
     }));
   }
-  actualizarIn(uid: string, inv: boolean, razon: string){
-    if(inv==false || inv==null){
-      this.db.collection('users').doc(uid).update({inhabilitado: true,razones: firestore.FieldValue.arrayUnion({
-        razon:"Usuario Bloqueado por: "+razon,
-        date: new Date()
-      })});
-    }else{
-      this.db.collection('users').doc(uid).update({inhabilitado: false,razones: firestore.FieldValue.arrayUnion({
-        razon:"Usuario desbloqueado por: "+razon,
-        date: new Date()
-      })});
-      
-    }
-  }
-  actualizarAdmin(uid: string, inv: boolean, razon: string){
-    if(inv==false || inv==null){
-      this.db.collection('users').doc(uid).update({admin: true, razones: firestore.FieldValue.arrayUnion({
-        razon:"Usuario modificado como admin por: "+ razon,
-        date: new Date()
-      })});
-    }else{
-      this.db.collection('users').doc(uid).update({admin: false, razones: firestore.FieldValue.arrayUnion({
-        razon:"Usuario dejo de ser admin por: "+ razon,
-        date: new Date()
-      })});
-    }
-  }
+  
 }

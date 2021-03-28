@@ -14,10 +14,7 @@ interface usuarioss {
     razon: string
   }
 }
-export interface razon {
-  date: Date;
-  razon: string;
-}
+
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
@@ -32,6 +29,7 @@ export class HistoryComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
+  
   constructor(public dialogRef: MatDialogRef<HistoryComponent>,@Inject(MAT_DIALOG_DATA) public user: usuarioss, private auth: AuthService) { }
 
   ngOnInit(): void {
@@ -40,6 +38,7 @@ export class HistoryComponent implements OnInit {
   obtenerRazones(uid: string){
     this.auth.obtenerDatos(uid).subscribe(usa=>{
       const data2: usuarioss = usa.payload.data() as usuarioss;
+      console.log(data2);
       if(data2.razones==null){
         this.razones=[];
       }else{
